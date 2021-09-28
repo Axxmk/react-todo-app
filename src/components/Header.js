@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 import './styles/Header.css'
-import Button from './Button';
+import Button from './Button'
 
 const Header = ({ title }) => {
 	const onClick = (e) => {

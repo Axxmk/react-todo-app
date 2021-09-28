@@ -1,0 +1,15 @@
+.task {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+
+	margin: 16px;
+	padding: 16px;
+
+	border-radius: 18px;
+	box-shadow: 0px 2px 6px #cfcfcf;
+}
+
+.task span {
+	font-size: 18px;
+}

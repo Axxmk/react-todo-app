@@ -21,19 +21,24 @@ function App() {
       id: 3,
       text: 'Study ReactJS',
       day: 'Sep 30th at 4:00pm',
-      reminder: true,
+      reminder: false,
     },
   ]);
 
   // Delete task
-  const DeleteTask = (id) => {
+  const deleteTask = (id) => {
     setTasks(tasks.filter(task => task.id !== id));
-  };
+  }
+
+  //Toggle reminder
+  const toggleReminder = (id) => {
+    setTasks(tasks.map(task => task.id === id ? { ...task, reminder: !task.reminder } : task));
+  }
 
   return (
     <div className="container">
       <Header />
-      {tasks.length > 0 ? <Tasks tasks={tasks} onDelete={DeleteTask} /> : 'No Tasks :)'}
+      {tasks.length > 0 ? <Tasks tasks={tasks} onDelete={deleteTask} onToggle={toggleReminder} /> : 'No Tasks :)'}
     </div>
   );
 }

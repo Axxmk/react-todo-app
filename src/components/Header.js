@@ -16,7 +16,7 @@ const Header = ({ title }) => {
 }
 
 Header.defaultProps = {
-	title: "My To-do List"
+	title: "My To-do List",
 }
 
 Header.propTypes = {

@@ -1,4 +1,4 @@
-import { FaTrash } from 'react-icons/fa'
+import { FaTrash, FaPencilAlt } from 'react-icons/fa'
 import './styles/Task.css'
 
 const Task = ({ task, onDelete, onToggle }) => {
@@ -10,7 +10,11 @@ const Task = ({ task, onDelete, onToggle }) => {
 				</h4>
 				<p>{task.day}</p>
 			</div>
-			<FaTrash style={{ color: 'rgb(253, 98, 98)' }} className="icon click" onClick={() => onDelete(task.id)} />
+
+			<div>
+				<FaPencilAlt style={{ color: 'grey', marginRight: '12px' }} className="icon click" />
+				<FaTrash style={{ color: 'rgb(253, 98, 98)' }} className="icon click" onClick={() => onDelete(task.id)} />
+			</div>
 		</div >
 	);
 }

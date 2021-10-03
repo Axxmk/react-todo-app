@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import './styles/App.css'
 import AddTask from './AddTask'
 import Header from './Header'
@@ -6,45 +6,101 @@ import Tasks from './Tasks'
 
 function App() {
   const [showForm, setShowForm] = useState(false);
-  const [tasks, setTasks] = useState([
-    {
-      id: 1,
-      text: 'Food shopping',
-      day: 'Sep 27th at 4:00pm',
-      reminder: true,
-    },
-    {
-      id: 2,
-      text: 'Playing Poker',
-      day: 'Sep 28th at 10:00pm',
-      reminder: true,
-    },
-    {
-      id: 3,
-      text: 'Study ReactJS',
-      day: 'Sep 30th at 4:00pm',
-      reminder: false,
-    },
-  ]);
+  const [tasks, setTasks] = useState([]);
 
-  // Add Task
-  const addTask = (task) => {
-    const id = Math.floor(Math.random() * 1000) + 1;
+  useEffect(() => {
+    const getTasks = async () => {
+      const tasksFromServer = await fetchTasks();
+      setTasks(tasksFromServer);
+    }
 
-    const newTask = { id, ...task };
+    getTasks();
+  }, [])
 
-    setTasks(tasks.concat(newTask));
-    setShowForm(!showForm);
+  // Fetch tasks from server
+  const fetchTasks = async () => {
+    try {
+      const res = await fetch('http://localhost:5000/tasks');
+      const data = await res.json();
+
+      return data;
+    }
+    catch (error) {
+      console.log(error);
+    }
+  }
+
+  // Fetch single task from server
+  const fetchTask = async (id) => {
+    try {
+      const res = await fetch(`http://localhost:5000/tasks/${id}`);
+      const data = await res.json();
+
+      return data;
+    }
+    catch (error) {
+      console.log(error);
+    }
+  }
+
+  // Add task
+  const addTask = async (task) => {
+    // const id = ++autoIncrease;
+    // const newTask = { id, ...task };
+
+    try {
+      const res = await fetch(`http://localhost:5000/tasks`, {
+        method: 'POST',
+        headers: {
+          'Content-type': 'application/json',
+        },
+        body: JSON.stringify(task),
+      })
+
+      const newTask = await res.json();
+
+      setTasks(tasks.concat(newTask));
+      setShowForm(!showForm);
+    }
+    catch (error) {
+      console.log(error);
+    }
   }
 
   // Delete task
-  const deleteTask = (id) => {
-    setTasks(tasks.filter(task => task.id !== id));
+  const deleteTask = async (id) => {
+    try {
+      await fetch(`http://localhost:5000/tasks/${id}`, {
+        method: 'DELETE'
+      })
+
+      setTasks(tasks.filter(task => task.id !== id));
+    }
+    catch (error) {
+      console.log(error);
+    }
   }
 
   //Toggle reminder
-  const toggleReminder = (id) => {
-    setTasks(tasks.map(task => task.id === id ? { ...task, reminder: !task.reminder } : task));
+  const toggleReminder = async (id) => {
+    try {
+      const taskToToggle = await fetchTask(id);
+      const updTask = { ...taskToToggle, reminder: !taskToToggle.reminder };
+
+      await fetch(`http://localhost:5000/tasks/${id}`, {
+        method: 'PUT',
+        headers: {
+          'Content-type': 'application/json',
+        },
+        body: JSON.stringify(updTask),
+      })
+
+      setTasks(tasks.map(task => task.id === id ? updTask : task));
+    }
+    catch (error) {
+      console.log(error);
+    }
+
   }
 
   return (

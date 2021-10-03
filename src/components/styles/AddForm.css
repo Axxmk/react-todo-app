@@ -1,0 +1,41 @@
+.add-form {
+	margin-bottom: 30px;
+}
+
+.add-form .btn {
+	margin: 8px 4px;
+	height: 40px;
+	width: 100%;
+
+	font-size: 15px;
+	background-color: #d2f6c4;
+}
+
+.form-input label {
+	font-size: 16px;
+	font-weight: 500;
+	display: block;
+}
+
+.form-input input {
+	margin: 16px;
+	padding: 14px 12px;
+	width: 95%;
+
+	font-size: 15px;
+
+	border: none;
+	border-radius: 12px;
+	box-shadow: 0px 0px 4px #c7c7c7;
+}
+
+.form-input input:focus {
+	outline: none;
+	box-shadow: 0px 0px 4px #a3a3a3;
+}
+
+.form-input.checkbox input {
+	box-shadow: none;
+	width: 18px;
+	height: 18px;
+}

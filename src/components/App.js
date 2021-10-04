@@ -3,6 +3,7 @@ import './styles/App.css'
 import AddTask from './AddTask'
 import Header from './Header'
 import Tasks from './Tasks'
+import Footer from './Footer'
 
 function App() {
   const [showForm, setShowForm] = useState(false);
@@ -108,6 +109,7 @@ function App() {
       <Header onShowTask={() => setShowForm(!showForm)} showForm={showForm} />
       {showForm && <AddTask onAddTask={addTask} />}
       {tasks.length > 0 ? <Tasks tasks={tasks} onDelete={deleteTask} onToggle={toggleReminder} /> : 'No Tasks :)'}
+      <Footer />
     </div>
   );
 }

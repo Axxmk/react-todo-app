@@ -47,3 +47,13 @@ body {
 .click:active {
 	transform: scale(0.88);
 }
+
+footer {
+	margin: 24px 0 0 10px;
+	text-align: center;
+	font-size: 14px;
+}
+
+footer p {
+	margin: 0;
+}

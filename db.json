@@ -1,21 +1,22 @@
 {
-  "tasks": [{
+  "tasks": [
+    {
       "id": 2,
       "text": "Playing valorant",
       "day": "Sep 28th at 10:00pm",
       "reminder": false
     },
     {
-      "id": 3,
-      "text": "Study ReactJS",
-      "day": "Sep 30th at 4:00pm",
-      "reminder": true
-    },
-    {
       "text": "Listen to music",
       "day": "Oct 4th at 1:00am",
       "reminder": true,
       "id": 4
+    },
+    {
+      "text": "Sleep",
+      "day": "tonight",
+      "reminder": true,
+      "id": 5
     }
   ]
 }

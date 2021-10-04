@@ -14,6 +14,12 @@ body {
 	font-size: calc(8px + 2vmin);
 }
 
+a {
+	font-size: 16px;
+	color: rgb(155, 155, 155);
+	text-decoration: none;
+}
+
 .container {
 	padding: 20px 32px;
 	min-width: 750px;
@@ -49,11 +55,14 @@ body {
 }
 
 footer {
-	margin: 24px 0 0 10px;
+	margin: 30px 0 0 10px;
+	padding-top: 18px;
 	text-align: center;
-	font-size: 14px;
+
+	font-size: 16px;
+	border-top: 1px solid rgb(212, 212, 212);
 }
 
-footer p {
+p {
 	margin: 0;
 }

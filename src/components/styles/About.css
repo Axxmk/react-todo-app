@@ -1,0 +1,10 @@
+.about {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.about h4 {
+	margin: 0;
+}

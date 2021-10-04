@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import './styles/AddForm.css'
+import '../styles/AddForm.css'
 
 const AddTask = ({ onAddTask }) => {
 	const [text, setText] = useState('');

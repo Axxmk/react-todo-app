@@ -1,5 +1,5 @@
 import { FaTrash, FaPencilAlt } from 'react-icons/fa'
-import './styles/Task.css'
+import '../styles/Task.css'
 
 const Task = ({ task, onDelete, onToggle }) => {
 	return (

@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 import { useLocation } from 'react-router-dom'
-import './styles/Header.css'
+import '../styles/Header.css'
 import Button from './Button'
 
 const Header = ({ title, onShowTask, showForm }) => {
